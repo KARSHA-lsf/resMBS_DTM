@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI."
+    />
+    <meta name="keywords" content="Semantic-UI, Theme, Design, Template" />
+    <meta name="author" content="PPType" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>resMBS Sep2019</title>
+    <link href="c3.min.css" rel="stylesheet" type="text/css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      type="text/css"
+    />
+    <style type="text/css">
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: grayscale;
+      }
+
+      #sidebar {
+        position: fixed;
+        height: 100vh;
+        background-color: #f5f5f5;
+        padding-top: 68px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      #sidebar .ui.menu > a.item {
+        padding: 10px 20px;
+        line-height: 20px;
+        color: #337ab7;
+        border-radius: 0 !important;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      #sidebar .ui.menu > a.item.active {
+        background-color: #337ab7;
+        color: white;
+        border: none !important;
+      }
+
+      #sidebar .ui.menu > a.item:hover {
+        background-color: #eee;
+        color: #23527c;
+      }
+
+      #content {
+        padding-top: 56px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      #content h1 {
+        font-size: 36px;
+      }
+
+      #content .ui.dividing.header {
+        width: 100%;
+      }
+
+      .ui.centered.small.circular.image {
+        margin-top: 14px;
+        margin-bottom: 14px;
+      }
+
+      .ui.borderless.menu {
+        box-shadow: none;
+        flex-wrap: wrap;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body id="root">
+
+      <script src="d3.v5.min.js" charset="utf-8"></script>
+      <script src="c3.min.js"></script>
+
+      <script>
+     
+
+          d3.csv('resMBS_DTM_5xIssOrig_v1.csv')
+            .then(function(data) {
+
+              d3.tsv('resMBS_FI_mapping.tsv')
+                .then(function(FI_names){
+                  
+
+
+              for (let index = 1; index < 31; index++) {
+                var data_arr = data_procesor(data.filter(function(d){ return d.Topic == index }),FI_names)
+    
+                var chart = c3.generate({
+                    bindto: '#chart'+index,
+                    title: {
+                      show: false,
+                      text: 'Topic'+index,
+                      position: 'top-center',   // top-left, top-center and top-right
+                      padding: {
+                        top: 20,
+                        right: 20,
+                        bottom: 40,
+                        left: 50
+                      }
+                    },
+                    data: {
+                        x: 'year',
+                        columns: data_arr
+                    },
+                    axis: {
+                      x: {
+                          label: 'year'
+                      },
+                      y: {
+                          label: 'weight'
+                      }
+                    },
+                    size: {
+                        height: 500,
+                        width: 300
+                    },
+
+                });
+                
+              }
+              // console.log(data.filter(function(d){ return d.Topic == "1" }))
+                
+            })
+            .catch(function(error){
+              // handle error   
+            })
+            })
+              .catch(function(error){
+              // handle error   
+            })
+    
+            function data_procesor(data,FI_names){
+    
+              var year = ['year',2002,2003,2004,2005,2006,2007,2008]
+              
+              var viz_data = []
+              viz_data.push(year)
+              //console.log(data)
+              
+    
+              var comp_roles = d3.map(data, function(d){return(d.comp_role)}).keys()
+              
+              for(let i =1; i<comp_roles.length; i++){
+                var FI = FI_name_mapping(FI_names, comp_roles[i])
+               // console.log(FI)
+                var weight = [FI]
+                
+                for(let yr = 2002; yr<2009;yr++){
+                  var level1 = data.filter(function(d){ return d.comp_role == comp_roles[i] && d.Year == yr })
+                  //var level1 = data.filter(function(d){ return d.Year == yr })
+    
+                  if(level1.length>0){
+                    weight.push(level1[0]['weight'])
+                    
+                  }else{
+                    weight.push(null)
+                  }
+                  
+                  
+                 }
+                 viz_data.push(weight)
+              }
+            //  console.log(viz_data)
+              return viz_data
+            }
+
+            function FI_name_mapping(Names, identifier){
+              identifier_new = identifier.split("+")
+              
+              var name_match = Names.filter(function(d){ return d.FI == identifier_new [0].toUpperCase()})
+              
+              if(name_match.length>0){
+                return name_match[0]['FI_Name']+"+"+identifier_new [1]
+              }else{
+                return identifier
+
+              }
+              
+            }
+
+    
+      </script>
+          
+
+    <div class="ui tablet computer only padded grid">
+      <div class="ui inverted borderless top fixed fluid menu">
+        <a class="header item">resMBS Sep2019 </a>
+      </div>
+    </div>
+    <div class="ui padded grid">
+      <div
+        class="three wide tablet only three wide computer only column"
+        id="sidebar"
+      >
+        <div class="ui vertical borderless fluid text menu">
+            <a href="index.html" class="item">Home</a> 
+            <a href="DTMfast_NoMult.html" class="item">DTMfast_NoMult</a>
+            <a href="DTMfast_5xIssOrig.html" class="active item">DTMfast_5xIssOrig</a>
+        </div>
+      </div>
+      <div
+        class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+        id="content"
+      >
+        <div class="ui padded grid">
+          <div class="row">
+            <h1 class="ui huge dividing header">DTMfast 5xIssOrig</h1>
+          </div>
+          
+          <div class="ui hidden section divider"></div>
+          <div class="row">
+                <div id="chart1" class="five wide column"></div>
+                <div id="chart2" class="five wide column"></div>
+                <div id="chart3" class="five wide column"></div>
+                <div id="chart4" class="five wide column"></div>
+                <div id="chart5" class="five wide column"></div>
+                <div id="chart6" class="five wide column"></div>
+                <div id="chart7" class="five wide column"></div>
+                <div id="chart8" class="five wide column"></div>
+                <div id="chart9" class="five wide column"></div>
+                <div id="chart10" class="five wide column"></div>
+                <div id="chart11" class="five wide column"></div>
+                <div id="chart12" class="five wide column"></div>
+                <div id="chart13" class="five wide column"></div>
+                <div id="chart14" class="five wide column"></div>
+                <div id="chart15" class="five wide column"></div>
+                <div id="chart16" class="five wide column"></div>
+                <div id="chart17" class="five wide column"></div>
+                <div id="chart18" class="five wide column"></div>
+                <div id="chart19" class="five wide column"></div>
+                <div id="chart20" class="five wide column"></div>
+                <div id="chart21" class="five wide column"></div>
+                <div id="chart22" class="five wide column"></div>
+                <div id="chart23" class="five wide column"></div>
+                <div id="chart24" class="five wide column"></div>
+                <div id="chart25" class="five wide column"></div>
+                <div id="chart26" class="five wide column"></div>
+                <div id="chart27" class="five wide column"></div>
+                <div id="chart28" class="five wide column"></div>
+                <div id="chart29" class="five wide column"></div>
+                <div id="chart30" class="five wide column"></div>
+              
+          </div>
+          
+         
+            <div class="ui grid">
+                
+                <div id="chart" class="five wide column"></div>
+                <div class="five wide column"></div>
+                <div class="five wide column"></div>
+                <div class="five wide column"></div>
+                <div class="five wide column"></div>
+                <div class="five wide column"></div>
+                <div class="five wide column"></div>
+              </div>
+          
+
+          
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".ui.toggle.button").click(function() {
+          $(".mobile.only.grid .ui.vertical.menu").toggle(100);
+        });
+      });
+    </script>
+  </body>
+</html>
