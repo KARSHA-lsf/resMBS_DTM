@@ -21,6 +21,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
       type="text/css"
     />
+    <script src="d3.v5.min.js" charset="utf-8"></script>
+    <script src="c3.min.js"></script>
+    <script src="draw_me.js"></script>
+    
     <style type="text/css">
       body {
         -webkit-font-smoothing: antialiased;
@@ -91,120 +95,6 @@
 
   <body id="root">
 
-      <script src="d3.v5.min.js" charset="utf-8"></script>
-      <script src="c3.min.js"></script>
-
-      <script>
-     
-
-          d3.csv('resMBS_DTM_5xIssOrig_v1.csv')
-            .then(function(data) {
-
-              d3.tsv('resMBS_FI_mapping.tsv')
-                .then(function(FI_names){
-                  
-
-
-              for (let index = 1; index < 31; index++) {
-                var data_arr = data_procesor(data.filter(function(d){ return d.Topic == index }),FI_names)
-    
-                var chart = c3.generate({
-                    bindto: '#chart'+index,
-                    title: {
-                      show: false,
-                      text: 'Topic'+index,
-                      position: 'top-center',   // top-left, top-center and top-right
-                      padding: {
-                        top: 20,
-                        right: 20,
-                        bottom: 40,
-                        left: 50
-                      }
-                    },
-                    data: {
-                        x: 'year',
-                        columns: data_arr
-                    },
-                    axis: {
-                      x: {
-                          label: 'year'
-                      },
-                      y: {
-                          label: 'weight'
-                      }
-                    },
-                    size: {
-                        height: 500,
-                        width: 300
-                    },
-
-                });
-                
-              }
-              // console.log(data.filter(function(d){ return d.Topic == "1" }))
-                
-            })
-            .catch(function(error){
-              // handle error   
-            })
-            })
-              .catch(function(error){
-              // handle error   
-            })
-    
-            function data_procesor(data,FI_names){
-    
-              var year = ['year',2002,2003,2004,2005,2006,2007,2008]
-              
-              var viz_data = []
-              viz_data.push(year)
-              //console.log(data)
-              
-    
-              var comp_roles = d3.map(data, function(d){return(d.comp_role)}).keys()
-              
-              for(let i =1; i<comp_roles.length; i++){
-                var FI = FI_name_mapping(FI_names, comp_roles[i])
-               // console.log(FI)
-                var weight = [FI]
-                
-                for(let yr = 2002; yr<2009;yr++){
-                  var level1 = data.filter(function(d){ return d.comp_role == comp_roles[i] && d.Year == yr })
-                  //var level1 = data.filter(function(d){ return d.Year == yr })
-    
-                  if(level1.length>0){
-                    weight.push(level1[0]['weight'])
-                    
-                  }else{
-                    weight.push(null)
-                  }
-                  
-                  
-                 }
-                 viz_data.push(weight)
-              }
-            //  console.log(viz_data)
-              return viz_data
-            }
-
-            function FI_name_mapping(Names, identifier){
-              identifier_new = identifier.split("+")
-              
-              var name_match = Names.filter(function(d){ return d.FI == identifier_new [0].toUpperCase()})
-              
-              if(name_match.length>0){
-                return name_match[0]['FI_Name']+"+"+identifier_new [1]
-              }else{
-                return identifier
-
-              }
-              
-            }
-
-    
-      </script>
-          
-
     <div class="ui tablet computer only padded grid">
       <div class="ui inverted borderless top fixed fluid menu">
         <a class="header item">resMBS Sep2019 </a>
@@ -217,7 +107,7 @@
       >
         <div class="ui vertical borderless fluid text menu">
             <a href="index.html" class="item">Home</a> 
-            <a href="DTMfast_NoMult.html" class="item">DTMfast_NoMult</a>
+            <a href="DTMfast_NoMult.html" class=" item">DTMfast_NoMult</a>
             <a href="DTMfast_5xIssOrig.html" class="active item">DTMfast_5xIssOrig</a>
         </div>
       </div>
@@ -228,6 +118,29 @@
         <div class="ui padded grid">
           <div class="row">
             <h1 class="ui huge dividing header">DTMfast 5xIssOrig</h1>
+            <div class="ui form">
+              <div class="inline fields">
+                <label>Show information of </label>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="data_select" value="topic" >
+                    <label>topic weights</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="data_select" value="prospectus">
+                    <label>prospectus counts</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="data_select" checked="checked" value="both">
+                    <label>both topics and prospectus</label>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
           <div class="ui hidden section divider"></div>
@@ -284,10 +197,21 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+   
     <script>
       $(document).ready(function() {
+        var data_files = ['resMBS_DTM_5xIssOrig_v1.csv','resMBS_FI_mapping.tsv','prospectus_count_annually.csv']
+        draw_me('both',data_files[0],data_files[1],data_files[2])
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
+        });
+
+        $("input[type='radio']").click(function(){
+            var radioValue = $("input[name='data_select']:checked").val();
+            if(radioValue){
+              draw_me(radioValue,data_files[0],data_files[1],data_files[2])
+            }     
+            
         });
       });
     </script>
