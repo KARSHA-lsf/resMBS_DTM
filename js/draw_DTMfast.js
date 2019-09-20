@@ -1,4 +1,4 @@
-function draw_me(data_param,data_main, data_mapping,data_counts){
+function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
     
     var y2_axis = true;
     var y1_axis = true;
@@ -128,7 +128,7 @@ function draw_me(data_param,data_main, data_mapping,data_counts){
 
         var comp_roles = d3.map(data, function(d){return(d.comp_role)}).keys()
         
-        for(let i =1; i<comp_roles.length; i++){
+        for(let i =0; i<comp_roles.length; i++){
           var FI = FI_name_mapping(FI_names, comp_roles[i])
          
           var weight = [FI]

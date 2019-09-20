@@ -9,7 +9,7 @@
     />
     <meta
       name="description"
-      content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI."
+      content="karsha visualization"
     />
     <meta name="keywords" content="Semantic-UI, Theme, Design, Template" />
     <meta name="author" content="PPType" />
@@ -23,14 +23,14 @@
     />
     <script src="js/d3.v5.min.js" charset="utf-8"></script>
     <script src="js/c3.min.js"></script>
-    <script src="js/draw_DTMfast.js"></script>
+    <script src="js/draw_me.js"></script>
     
     <link
       rel="stylesheet"
       href="css/custom.css"
       type="text/css"
     />
-  </head>
+</head>
 
   <body id="root">
 
@@ -44,7 +44,7 @@
         class="three wide tablet only three wide computer only column"
         id="sidebar"
       >
-       <!-- Side menu begins -->
+      <!-- Side menu begins -->
       <div id="side_menu" class="treemenu boxed" >
           <div class="ui fluid styled accordion">
             <div class="title">
@@ -54,18 +54,18 @@
             </div>
             <div class="content"> 
             </div>
-            <div class="title">
+            <div class="active title">
               <i class="dropdown icon"></i> Baseline
             </div>
-            <div class="content">
+            <div class="active content">
               <div class="accordion">
-                <div class="title">
-                  <a href="Baseline_round1.html">
+                <div class="active title">
+                  <a class="menu_active" href="Baseline_round1.html">
                   <i class="chart pie icon"></i> Round 1
                   </a>
                 </div>
-                <div class="content"></div>
-                <div class="title">
+                <div class=" content"></div>
+                <div class=" title">
                   <a href="Baseline_round2.html">
                   <i class="chart pie icon"></i> Round 2
                   </a>
@@ -83,20 +83,20 @@
             <div class="content">
               
             </div>   
-            <div class="active title">
+            <div class=" title">
                 <i class="dropdown icon"></i> DTMfast
             </div>
-            <div class="active content">
+            <div class=" content">
                 <div class="accordion">
-                    <div class="title">
-                      <a href="DTMfast_NoMult.html">
+                    <div class=" title">
+                      <a  href="DTMfast_NoMult.html">
                       <i class="chart pie icon"></i>NoMult
                     </a>
                     </div>
                     <div class="content">
                     </div>
-                    <div class="active title">
-                      <a class="menu_active" href="DTMfast_5xIssOrig.html">
+                    <div class="title">
+                      <a href="DTMfast_5xIssOrig.html">
                       <i class="chart pie icon"></i>5xIssOrig
                       </a>
                     </div>
@@ -111,8 +111,8 @@
 
         <!-- <div class="ui vertical borderless fluid text menu">
             <a href="index.html" class="item">Home</a> 
-            <a href="DTMfast_NoMult.html" class=" item">DTMfast_NoMult</a>
-            <a href="DTMfast_5xIssOrig.html" class="active item">DTMfast_5xIssOrig</a>
+            <a href="DTMfast_NoMult.html" class="active item">DTMfast_NoMult</a>
+            <a href="DTMfast_5xIssOrig.html" class="item">DTMfast_5xIssOrig</a>
         </div> -->
       </div>
       <div
@@ -121,9 +121,10 @@
       >
         <div class="ui padded grid">
           <div class="row">
-            <h1 class="ui huge dividing header">DTMfast 5xIssOrig</h1>
+            <h1 class="ui huge dividing header">Baseline Round 1</h1>
             <div class="ui form">
-              <div class="inline fields">
+              Under construction
+              <!-- <div class="inline fields">
                 <label>Show information of </label>
                 <div class="field">
                   <div class="ui radio checkbox">
@@ -143,12 +144,12 @@
                     <label>both topics and prospectus</label>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           
           <div class="ui hidden section divider"></div>
-          <div class="row">
+          <!-- <div class="row">
                 <div id="chart1" class="five wide column"></div>
                 <div id="chart2" class="five wide column"></div>
                 <div id="chart3" class="five wide column"></div>
@@ -192,8 +193,8 @@
                 <div class="five wide column"></div>
                 <div class="five wide column"></div>
                 <div class="five wide column"></div>
-              </div>
-          
+            </div>
+           -->
 
           
         </div>
@@ -204,8 +205,8 @@
    
     <script>
       $(document).ready(function() {
-        var data_files = ['data/DTMfast/resMBS_DTM_5xIssOrig_v1.csv','data/common/resMBS_FI_mapping.tsv','data/DTMfast/DTMfast_prospectus_count_annually.csv']
-        draw_DTMfast('both',data_files[0],data_files[1],data_files[2])
+        var data_files = ['data/DTMfast/resMBS_DT_nomult_v1.csv','data/common/resMBS_FI_mapping.tsv','data/common/prospectus_count_annually.csv']
+        draw_me('both',data_files[0],data_files[1],data_files[2])
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
         });
@@ -213,7 +214,7 @@
         $("input[type='radio']").click(function(){
             var radioValue = $("input[name='data_select']:checked").val();
             if(radioValue){
-              draw_DTMfast(radioValue,data_files[0],data_files[1],data_files[2])
+              draw_me(radioValue,data_files[0],data_files[1],data_files[2])
             }     
             
         });

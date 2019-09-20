@@ -9,89 +9,28 @@
     />
     <meta
       name="description"
-      content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI."
+      content="karsha visualization"
     />
     <meta name="keywords" content="Semantic-UI, Theme, Design, Template" />
     <meta name="author" content="PPType" />
     <meta name="theme-color" content="#ffffff" />
     <title>resMBS Sep2019</title>
-    <link href="c3.min.css" rel="stylesheet" type="text/css">
+    <link href="css/c3.min.css" rel="stylesheet" type="text/css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
       type="text/css"
     />
-    <script src="d3.v5.min.js" charset="utf-8"></script>
-    <script src="c3.min.js"></script>
-    <script src="draw_me.js"></script>
+    <script src="js/d3.v5.min.js" charset="utf-8"></script>
+    <script src="js/c3.min.js"></script>
+    <script src="js/draw_DTMfast.js"></script>
     
-    <style type="text/css">
-      body {
-        -webkit-font-smoothing: antialiased;
-        -moz-font-smoothing: grayscale;
-      }
-
-      #sidebar {
-        position: fixed;
-        height: 100vh;
-        background-color: #f5f5f5;
-        padding-top: 68px;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      #sidebar .ui.menu > a.item {
-        padding: 10px 20px;
-        line-height: 20px;
-        color: #337ab7;
-        border-radius: 0 !important;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-
-      #sidebar .ui.menu > a.item.active {
-        background-color: #337ab7;
-        color: white;
-        border: none !important;
-      }
-
-      #sidebar .ui.menu > a.item:hover {
-        background-color: #eee;
-        color: #23527c;
-      }
-
-      #content {
-        padding-top: 56px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      #content h1 {
-        font-size: 36px;
-      }
-
-      #content .ui.dividing.header {
-        width: 100%;
-      }
-
-      .ui.centered.small.circular.image {
-        margin-top: 14px;
-        margin-bottom: 14px;
-      }
-
-      .ui.borderless.menu {
-        box-shadow: none;
-        flex-wrap: wrap;
-        border: none;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
-        display: none;
-      }
-    </style>
-  </head>
+    <link
+      rel="stylesheet"
+      href="css/custom.css"
+      type="text/css"
+    />
+</head>
 
   <body id="root">
 
@@ -105,11 +44,76 @@
         class="three wide tablet only three wide computer only column"
         id="sidebar"
       >
-        <div class="ui vertical borderless fluid text menu">
+      <!-- Side menu begins -->
+      <div id="side_menu" class="treemenu boxed" >
+          <div class="ui fluid styled accordion">
+            <div class="title">
+              <a href="index.html">
+                <i class="home icon"></i> Home
+              </a>
+            </div>
+            <div class="content"> 
+            </div>
+            <div class="title">
+              <i class="dropdown icon"></i> Baseline
+            </div>
+            <div class="content">
+              <div class="accordion">
+                <div class="title">
+                  <a href="Baseline_round1.html">
+                  <i class="chart pie icon"></i> Round 1
+                  </a>
+                </div>
+                <div class="content"></div>
+                <div class="title">
+                  <a href="Baseline_round2.html">
+                  <i class="chart pie icon"></i> Round 2
+                  </a>
+                </div>
+                <div class="content"></div>
+                
+              </div>
+            </div>
+
+            <div class="title">
+              <a href="DTMslow.html">
+                <i class="chart pie icon"></i> DTMslow
+              </a>
+            </div>
+            <div class="content">
+              
+            </div>   
+            <div class="active title">
+                <i class="dropdown icon"></i> DTMfast
+            </div>
+            <div class="active content">
+                <div class="accordion">
+                    <div class="active title">
+                      <a class="menu_active" href="DTMfast_NoMult.html">
+                      <i class="chart pie icon"></i>NoMult
+                    </a>
+                    </div>
+                    <div class="content">
+                    </div>
+                    <div class="title">
+                      <a href="DTMfast_5xIssOrig.html">
+                      <i class="chart pie icon"></i>5xIssOrig
+                      </a>
+                    </div>
+                    <div class="content">    
+                    </div>
+                    
+                  </div>
+            </div>        
+          </div>
+      </div>
+      <!-- Side menu End -->
+
+        <!-- <div class="ui vertical borderless fluid text menu">
             <a href="index.html" class="item">Home</a> 
             <a href="DTMfast_NoMult.html" class="active item">DTMfast_NoMult</a>
             <a href="DTMfast_5xIssOrig.html" class="item">DTMfast_5xIssOrig</a>
-        </div>
+        </div> -->
       </div>
       <div
         class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
@@ -200,8 +204,8 @@
    
     <script>
       $(document).ready(function() {
-        var data_files = ['resMBS_DT_nomult_v1.csv','resMBS_FI_mapping.tsv','prospectus_count_annually.csv']
-        draw_me('both',data_files[0],data_files[1],data_files[2])
+        var data_files = ['data/DTMfast/resMBS_DT_nomult_v1.csv','data/common/resMBS_FI_mapping.tsv','data/DTMfast/DTMfast_prospectus_count_annually.csv']
+        draw_DTMfast('both',data_files[0],data_files[1],data_files[2])
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
         });
@@ -209,10 +213,11 @@
         $("input[type='radio']").click(function(){
             var radioValue = $("input[name='data_select']:checked").val();
             if(radioValue){
-              draw_me(radioValue,data_files[0],data_files[1],data_files[2])
+              draw_DTMfast(radioValue,data_files[0],data_files[1],data_files[2])
             }     
             
         });
+        $('.ui.accordion').accordion({ exclusive: false });
       });
     </script>
   </body>
