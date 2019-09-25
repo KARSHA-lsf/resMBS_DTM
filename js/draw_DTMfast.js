@@ -1,13 +1,16 @@
 function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
-    
+  
     var y2_axis = true;
     var y1_axis = true;
     var chart_height = 600;
+    
     if(data_param =='topic'){
         y2_axis = false
     }else if(data_param == 'prospectus'){
         y1_axis = false
         chart_height = 400
+    }else if(data_param == 'topic_evolution'){
+      
     }else{
 
     }
@@ -24,65 +27,76 @@ function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
            
 
             for (let index = 1; index < 31; index++) {
-              var data_arr = data_procesor(
-                data.filter(function(d){ return d.Topic == index }),FI_names,
-                Prospectus_cnt.filter(function(d){ return d.Topic == 'Topic '+index },),
-                data_param)
-                
+              var chart
+              if(data_param !== 'topic_evolution'){
 
-              var chart = c3.generate({
-                  bindto: '#chart'+index,
-                  title: {
-                    show: true,
-                    text: 'Topic'+index,
-                    position: 'top-center',   // top-left, top-center and top-right
-                    padding: {
-                      top: 20,
-                      right: 20,
-                      bottom: 40,
-                      left: 50
-                    }
-                  },
-                  data: {
-                      x: 'year',
-                      columns: data_arr,
-                      axes: {
-                           prospectus_count_all: 'y2',
-                           prospectus_count_bloomberg: 'y2'
-                       },
-                      types: {
-                        prospectus_count_all: 'bar',
-                        prospectus_count_bloomberg: 'bar'
+                  var data_arr = data_procesor(
+                    data.filter(function(d){ return d.Topic == index }),FI_names,
+                    Prospectus_cnt.filter(function(d){ return d.Topic == 'Topic '+index },),
+                    data_param)
+                    
+
+                  chart = c3.generate({
+                      bindto: '#chart'+index,
+                      title: {
+                        show: true,
+                        text: 'Topic'+index,
+                        position: 'top-center',   // top-left, top-center and top-right
+                        padding: {
+                          top: 20,
+                          right: 20,
+                          bottom: 40,
+                          left: 50
+                        }
                       },
-                      colors: {
-                        prospectus_count_all: '#E7D77D',
-                        prospectus_count_bloomberg: '#9C84A2',
+                      data: {
+                          x: 'year',
+                          columns: data_arr,
+                          axes: {
+                              prospectus_count_all: 'y2',
+                              prospectus_count_bloomberg: 'y2'
+                          },
+                          types: {
+                            prospectus_count_all: 'bar',
+                            prospectus_count_bloomberg: 'bar'
+                          },
+                          colors: {
+                            prospectus_count_all: '#E7D77D',
+                            prospectus_count_bloomberg: '#9C84A2',
+                              
+                          },
                           
                       },
-                      
-                  },
-                  axis: {
-                    x: {
-                        label: 'year'
-                    },
-                    y: {
-                        label: 'weight',
-                        show: y1_axis,
-                    },
-                    y2: {
-                      show: y2_axis,
-                      label: 'Prospectus Count'
-                    }
-                  },
-                  size: {
-                      height: chart_height,
-                      width: 300
-                  },
+                      axis: {
+                        x: {
+                            label: 'year'
+                        },
+                        y: {
+                            label: 'weight',
+                            show: y1_axis,
+                        },
+                        y2: {
+                          show: y2_axis,
+                          label: 'Prospectus Count'
+                        }
+                      },
+                      size: {
+                          height: chart_height,
+                          width: 300
+                      },
 
-              });
-              
-            }
-        
+                  });
+                  
+              }else{
+                var temp_sankey_grp = data_for_sankey(data,index)
+                temp_sankey_grp.nodes.forEach(ele => {
+                  ele.name = company_name_trunctated (25,FI_name_mapping(FI_names, ele.name))
+                  console.log(ele)
+                });
+
+                draw_sankey('chart'+index,index,temp_sankey_grp)
+              }
+          }
       })  
       })
       })

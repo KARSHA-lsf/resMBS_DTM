@@ -28,11 +28,13 @@
       href="css/custom.css"
       type="text/css"
     />
-    <!-- <link
+    <link
     rel="stylesheet"
     href="css/sankey.css"
     type="text/css"
-  /> -->
+  />
+
+
 </head>
 
   <body id="root">
@@ -78,21 +80,21 @@
               </div>
             </div>
 
-            <div class="title">
-              <a href="DTMslow.html">
+            <div class="active title">
+              <a class="menu_active" href="DTMslow.html">
                 <i class="chart pie icon"></i> DTMslow
               </a>
             </div>
-            <div class="content">
+            <div class="active content">
               
             </div>   
-            <div class="active title">
+            <div class=" title">
                 <i class="dropdown icon"></i> DTMfast
             </div>
-            <div class="active content">
+            <div class=" content">
                 <div class="accordion">
-                    <div class="active title">
-                      <a class="menu_active" href="DTMfast_NoMult.html">
+                    <div class=" title">
+                      <a  href="DTMfast_NoMult.html">
                       <i class="chart pie icon"></i>NoMult
                     </a>
                     </div>
@@ -124,7 +126,7 @@
       >
         <div class="ui padded grid">
           <div class="row">
-            <h1 class="ui huge dividing header">DTMfast NoMult</h1>
+            <h1 class="ui huge dividing header">DTMslow</h1>
             <div class="ui form">
               <div class="inline fields">
                 <label>Show information of </label>
@@ -146,48 +148,15 @@
                     <label>both topics and prospectus</label>
                   </div>
                 </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="data_select" value="topic_evolution">
-                    <label>topic evolution</label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           
           <div class="ui hidden section divider"></div>
           <div class="row">
-                <div id="chart1" class="five wide column"></div>
-                <div id="chart2" class="five wide column"></div>
-                <div id="chart3" class="five wide column"></div>
-                <div id="chart4" class="five wide column"></div>
-                <div id="chart5" class="five wide column"></div>
-                <div id="chart6" class="five wide column"></div>
-                <div id="chart7" class="five wide column"></div>
-                <div id="chart8" class="five wide column"></div>
-                <div id="chart9" class="five wide column"></div>
-                <div id="chart10" class="five wide column"></div>
-                <div id="chart11" class="five wide column"></div>
-                <div id="chart12" class="five wide column"></div>
-                <div id="chart13" class="five wide column"></div>
-                <div id="chart14" class="five wide column"></div>
-                <div id="chart15" class="five wide column"></div>
-                <div id="chart16" class="five wide column"></div>
-                <div id="chart17" class="five wide column"></div>
-                <div id="chart18" class="five wide column"></div>
-                <div id="chart19" class="five wide column"></div>
-                <div id="chart20" class="five wide column"></div>
-                <div id="chart21" class="five wide column"></div>
-                <div id="chart22" class="five wide column"></div>
-                <div id="chart23" class="five wide column"></div>
-                <div id="chart24" class="five wide column"></div>
-                <div id="chart25" class="five wide column"></div>
-                <div id="chart26" class="five wide column"></div>
-                <div id="chart27" class="five wide column"></div>
-                <div id="chart28" class="five wide column"></div>
-                <div id="chart29" class="five wide column"></div>
-                <div id="chart30" class="five wide column"></div>
+                <div id="sankey1" class="five wide column svg-container" style="height: 800px; min-width: 600px;"></div>
+                <div id="sankey2" class="five wide column"></div>
+                
               
           </div>
           
@@ -196,46 +165,43 @@
                 
                 <div id="chart" class="five wide column"></div>
                 <div class="five wide column"></div>
-                <div class="five wide column"></div>
-                <div class="five wide column"></div>
-                <div class="five wide column"></div>
-                <div class="five wide column"></div>
-                <div class="five wide column"></div>
+                
               </div>
           
 
           
         </div>
-      </div> 
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="js/d3.v5.min.js" charset="utf-8"></script>
-    <script src="js/c3.min.js"></script>
     
-    <script src="js/draw_DTMfast.js"></script>
-    <script src="js/common/company_name_trunc.js"></script>
-
     <script src="js/draw_sankey.js"></script>
     <script src="js/common/sankey.js"></script>
+    
+    
    
     <script>
       $(document).ready(function() {
-        var data_files = ['data/DTMfast/resMBS_DT_nomult_v1.csv','data/common/resMBS_FI_mapping.tsv','data/DTMfast/DTMfast_prospectus_count_annually.csv']
-        draw_DTMfast('both',data_files[0],data_files[1],data_files[2])
+        
+        
+        //draw_DTMslow('both',data_files[0],data_files[1],data_files[2])
+        draw_sankey("sankey1")
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
         });
 
-        $("input[type='radio']").click(function(){
-            var radioValue = $("input[name='data_select']:checked").val();
-            if(radioValue){
-              
-              draw_DTMfast(radioValue,data_files[0],data_files[1],data_files[2])
-            }     
+        // $("input[type='radio']").click(function(){
+        //     var radioValue = $("input[name='data_select']:checked").val();
+        //     if(radioValue){
+        //       draw_DTMslow(radioValue,data_files[0],data_files[1],data_files[2])
+        //     }     
             
-        });
+        // });
         $('.ui.accordion').accordion({ exclusive: false });
+
+        //console.log(company_name_trunctated(20, "jkafbbf &&527 1)^dfbsdk"))
       });
     </script>
   </body>
