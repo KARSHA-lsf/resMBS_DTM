@@ -23,7 +23,6 @@
     />
     <script src="js/d3.v5.min.js" charset="utf-8"></script>
     <script src="js/c3.min.js"></script>
-    <script src="js/draw_me.js"></script>
     
     <link
       rel="stylesheet"
@@ -76,13 +75,27 @@
             </div>
 
             <div class="title">
-              <a href="DTMslow.html">
-                <i class="chart pie icon"></i> DTMslow
-              </a>
+              <i class="dropdown icon"></i> DTMslow
             </div>
             <div class="content">
-              
-            </div>   
+              <div class="accordion">
+                <div class="title">
+                  <a  href="DTMslow_NoMult.html">
+                  <i class="chart pie icon"></i>NoMult
+                </a>
+                </div>
+                <div class="content">
+                </div>
+                <div class="title">
+                  <a  href="DTMslow_5xIssOrig.html">
+                  <i class="chart pie icon"></i>5xIssOrig
+                  </a>
+                </div>
+                <div class="content">    
+                </div>
+              </div>
+            </div>  
+            
             <div class=" title">
                 <i class="dropdown icon"></i> DTMfast
             </div>
@@ -205,19 +218,12 @@
    
     <script>
       $(document).ready(function() {
-        var data_files = ['data/DTMfast/resMBS_DT_nomult_v1.csv','data/common/resMBS_FI_mapping.tsv','data/common/prospectus_count_annually.csv']
-        draw_me('both',data_files[0],data_files[1],data_files[2])
+       
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
         });
 
-        $("input[type='radio']").click(function(){
-            var radioValue = $("input[name='data_select']:checked").val();
-            if(radioValue){
-              draw_me(radioValue,data_files[0],data_files[1],data_files[2])
-            }     
-            
-        });
+        
         $('.ui.accordion').accordion({ exclusive: false });
       });
     </script>

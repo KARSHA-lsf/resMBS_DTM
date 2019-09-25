@@ -74,13 +74,27 @@
             </div>
 
             <div class="active title">
-              <a class="menu_active" href="DTMslow.html">
-                <i class="chart pie icon"></i> DTMslow
-              </a>
+              <i class="dropdown icon"></i> DTMslow 
             </div>
             <div class="active content">
-              
-            </div>   
+              <div class="accordion">
+                <div class="title">
+                  <a  href="DTMslow_NoMult.html">
+                  <i class="chart pie icon"></i>NoMult
+                </a>
+                </div>
+                <div class="content">
+                </div>
+                <div class="active title">
+                  <a class="menu_active" href="DTMslow_5xIssOrig.html">
+                  <i class="chart pie icon"></i>5xIssOrig
+                  </a>
+                </div>
+                <div class="content">    
+                </div>
+              </div>
+            </div>  
+            
             <div class=" title">
                 <i class="dropdown icon"></i> DTMfast
             </div>
@@ -119,7 +133,7 @@
       >
         <div class="ui padded grid">
           <div class="row">
-            <h1 class="ui huge dividing header">DTMslow</h1>
+            <h1 class="ui huge dividing header">DTMslow 5xIssOrig</h1>
             <div class="ui form">
               <div class="inline fields">
                 <label>Show information of </label>
@@ -141,6 +155,12 @@
                     <label>both topics and prospectus</label>
                   </div>
                 </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="data_select" value="topic_evolution">
+                      <label>topic evolution</label>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -204,11 +224,14 @@
     
     <script src="js/draw_DTMslow.js"></script>
     <script src="js/common/company_name_trunc.js"></script>
+
+    <script src="js/draw_sankey.js"></script>
+    <script src="js/common/sankey.js"></script> 
    
     <script>
       $(document).ready(function() {
         
-        var data_files = ['data/DTMslow/resMBS_DTM_slow_v1.csv','data/common/resMBS_FI_mapping.tsv','data/DTMslow/DTMslow_prospectus_count_annually.csv']
+        var data_files = ['data/DTMslow/resMBS_DTM_slow_5xIssOrig_v1.csv','data/common/resMBS_FI_mapping.tsv','data/DTMslow/DTMslow_prospectus_count_annually.csv']
         draw_DTMslow('both',data_files[0],data_files[1],data_files[2])
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
