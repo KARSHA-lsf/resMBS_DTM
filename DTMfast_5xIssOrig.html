@@ -141,6 +141,12 @@
                     <label>both topics and prospectus</label>
                   </div>
                 </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="data_select" value="topic_evolution">
+                    <label>topic evolution</label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -202,8 +208,12 @@
 
     <script src="js/d3.v5.min.js" charset="utf-8"></script>
     <script src="js/c3.min.js"></script>
+    
     <script src="js/draw_DTMfast.js"></script>
     <script src="js/common/company_name_trunc.js"></script>
+
+    <script src="js/draw_sankey.js"></script>
+    <script src="js/common/sankey.js"></script>
    
     <script>
       $(document).ready(function() {
@@ -212,7 +222,7 @@
         $(".ui.toggle.button").click(function() {
           $(".mobile.only.grid .ui.vertical.menu").toggle(100);
         });
-
+ 
         $("input[type='radio']").click(function(){
             var radioValue = $("input[name='data_select']:checked").val();
             if(radioValue){

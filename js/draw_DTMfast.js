@@ -27,7 +27,7 @@ function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
            
 
             for (let index = 1; index < 31; index++) {
-              var chart
+              
               if(data_param !== 'topic_evolution'){
 
                   var data_arr = data_procesor(
@@ -36,7 +36,7 @@ function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
                     data_param)
                     
 
-                  chart = c3.generate({
+                  var chart = c3.generate({
                       bindto: '#chart'+index,
                       title: {
                         show: true,
@@ -91,7 +91,7 @@ function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
                 var temp_sankey_grp = data_for_sankey(data,index)
                 temp_sankey_grp.nodes.forEach(ele => {
                   ele.name = company_name_trunctated (25,FI_name_mapping(FI_names, ele.name))
-                  console.log(ele)
+                  
                 });
 
                 draw_sankey('chart'+index,index,temp_sankey_grp)
