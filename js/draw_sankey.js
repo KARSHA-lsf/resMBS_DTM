@@ -8,18 +8,22 @@ function data_for_sankey(data,topic){
         
         nodes.push(new sankey_node_prototype(nodes.length,ele))
     });
-    var years = d3.map(topic_data, function(d){return d.Year;}).keys()
+    var years =  d3.map(topic_data, function(d){return d.Year;}).keys().sort()
+    console.log(years)
+    //var years = [2002,2003,2004,2005,2006,2007,2008]
     years.forEach(ele => {
         nodes.push(new sankey_node_prototype(nodes.length,ele))
     });
 
+    //nodes = nodes.sort((a, b) => (a.name > b.name) ? 1 : -1)
+
     //create links array for sankey
     var links =[]
     topic_data.forEach(ele => {
-        var source = nodes.find(function(e){
+        var target = nodes.find(function(e){
             return e.name == ele.comp_role
         });
-        var target = nodes.find(function(e){
+        var source = nodes.find(function(e){
             return e.name == ele.Year
         });
         links.push(new sankey_link_prototype(source.node, target.node ,ele.weight))
@@ -61,11 +65,13 @@ function draw_sankey(div_id,topic_id,graph){
     
     // load the data
     //d3.json("data/test/test.json").then(function(graph) {
-    
+    //console.log(graph.nodes.sort((a, b) => (a.name > b.name) ? 1 : -1))
+    console.log(graph.nodes)
+    console.log(graph.links)
       sankey
           .nodes(graph.nodes)
           .links(graph.links)
-          .layout(32);
+          .layout(0);
     
     // add in the links
       var link = svg.append("g").selectAll(".link")
