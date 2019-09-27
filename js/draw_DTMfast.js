@@ -145,11 +145,11 @@ function draw_DTMfast(data_param,data_main, data_mapping,data_counts){
         for(let i =0; i<comp_roles.length; i++){
           var FI = FI_name_mapping(FI_names, comp_roles[i])
 
-          var only_comapny_name = FI.split("+")
-          var truncated_company_name = company_name_trunctated(25,only_comapny_name[0] )
-          var weight = [truncated_company_name+"+"+only_comapny_name[1]]
+          //var only_comapny_name = FI.split("+")
+          var truncated_company_name = company_name_trunctated(25,FI)
+          var weight = [truncated_company_name]
          
-          var weight = [truncated_company_name+"+"+only_comapny_name[1]]
+         // var weight = [truncated_company_name+"+"+only_comapny_name[1]]
           
           for(let yr = 2002; yr<2009;yr++){
             var level1 = data.filter(function(d){ return d.comp_role == comp_roles[i] && d.Year == yr })

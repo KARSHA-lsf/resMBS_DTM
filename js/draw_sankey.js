@@ -9,7 +9,7 @@ function data_for_sankey(data,topic){
         nodes.push(new sankey_node_prototype(nodes.length,ele))
     });
     var years =  d3.map(topic_data, function(d){return d.Year;}).keys().sort()
-    console.log(years)
+    //console.log(years)
     //var years = [2002,2003,2004,2005,2006,2007,2008]
     years.forEach(ele => {
         nodes.push(new sankey_node_prototype(nodes.length,ele))
@@ -66,8 +66,8 @@ function draw_sankey(div_id,topic_id,graph){
     // load the data
     //d3.json("data/test/test.json").then(function(graph) {
     //console.log(graph.nodes.sort((a, b) => (a.name > b.name) ? 1 : -1))
-    console.log(graph.nodes)
-    console.log(graph.links)
+   // console.log(graph.nodes)
+    //console.log(graph.links)
       sankey
           .nodes(graph.nodes)
           .links(graph.links)
