@@ -1,0 +1,210 @@
+Topic: 1
+0.324*"fi_165+issuer"--MAIA MORTGAGE FINANCE STATUTORY TRUST
+0.051*"fi_306+servicer"--WELLS FARGO
+0.050*"fi_104+issuer"--FIELDSTONE SERVICING CORP.
+0.046*"fi_129+depositor"--GREENWICH CAPITAL MARKETS, INC.
+0.040*"fi_129+seller"--GREENWICH CAPITAL MARKETS, INC.
+
+Topic: 2
+0.187*"fi_122+originator"--FREMONT FINANCIAL CORPORATION
+0.096*"fi_308+issuer"--WILMINGTON TRUST
+0.079*"fi_193+issuer"--NOMURA SECURITIES CO., LTD.
+0.063*"fi_306+servicer"--WELLS FARGO
+0.058*"fi_140+issuer"--HOUSEHOLD
+
+Topic: 3
+0.178*"fi_22+originator"--AMERIQUEST MORTGAGE CO.
+0.143*"fi_171+issuer"--MERRILL LYNCH
+0.088*"fi_128+issuer"--GREENPOINT
+0.075*"fi_73+originator"--CREDIT SUISSE SECURITIES (USA) LLC
+0.048*"fi_51+issuer"--CASTLEOAK SECURITIES
+
+Topic: 4
+0.300*"fi_134+issuer"--HOME LOAN SERVICES INC.
+0.072*"fi_259+issuer"--SPECIALTY
+0.060*"fi_219+issuer"--PHH CORP
+0.038*"fi_306+originator"--WELLS FARGO
+0.036*"fi_171+depositor"--MERRILL LYNCH
+
+Topic: 5
+0.117*"fi_305+originator"--WATERFIELD MORTGAGE COMPANY, INC.
+0.098*"fi_41+issuer"--BEAR STEARNS & CO. INC.
+0.086*"fi_71+issuer"--COUNTRYWIDE HOME LOANS
+0.081*"fi_128+originator"--GREENPOINT
+0.050*"fi_41+depositor"--BEAR STEARNS & CO. INC.
+
+Topic: 6
+0.311*"fi_262+issuer"--STRUCTURED ASSET
+0.088*"fi_188+originator"--NEW CENTURY
+0.046*"fi_306+servicer"--WELLS FARGO
+0.044*"fi_262+depositor"--STRUCTURED ASSET
+0.043*"fi_306+securities-administrator"--WELLS FARGO
+
+Topic: 7
+0.208*"fi_210+originator"--OPTION ONE
+0.077*"fi_88+originator"--ENCORE CREDIT CORPORATION
+0.071*"fi_210+servicer"--OPTION ONE
+0.060*"fi_134+issuer"--HOME LOAN SERVICES INC.
+0.044*"fi_171+originator"--MERRILL LYNCH
+
+Topic: 8
+0.148*"fi_262+issuer"--STRUCTURED ASSET
+0.128*"fi_31+servicer"--AURORA LOAN SERVICES LLC
+0.127*"fi_157+originator"--LEHMAN BROTHERS
+0.114*"fi_157+issuer"--LEHMAN BROTHERS
+0.081*"fi_157+seller"--LEHMAN BROTHERS
+
+Topic: 9
+0.181*"fi_178+originator"--MORTGAGE LENDERS NETWORK USA, INC.
+0.145*"fi_31+originator"--AURORA LOAN SERVICES LLC
+0.136*"fi_31+servicer"--AURORA LOAN SERVICES LLC
+0.068*"fi_106+originator"--FINANCE AMERICA
+0.049*"fi_306+originator"--WELLS FARGO
+
+Topic: 10
+0.261*"fi_147+issuer"--INDYMAC
+0.112*"fi_249+issuer"--SECURITIZED ASSET BACKED RECEIVABLES LLC
+0.110*"fi_147+depositor"--INDYMAC
+0.105*"fi_147+seller"--INDYMAC
+0.101*"fi_147+servicer"--INDYMAC
+
+Topic: 11
+0.118*"fi_147+originator"--INDYMAC
+0.066*"fi_71+originator"--COUNTRYWIDE HOME LOANS
+0.047*"fi_306+originator"--WELLS FARGO
+0.034*"fi_62+issuer"--CITIGROUP
+0.034*"fi_63+servicer"--CITIMORTGAGE
+
+Topic: 12
+0.469*"fi_71+issuer"--COUNTRYWIDE HOME LOANS
+0.126*"fi_71+servicer"--COUNTRYWIDE HOME LOANS
+0.080*"fi_71+seller"--COUNTRYWIDE HOME LOANS
+0.062*"fi_72+depositor"--COUNTRYWIDE SECURITIES CORPORATION
+0.053*"fi_71+depositor"--COUNTRYWIDE HOME LOANS
+
+Topic: 13
+0.320*"fi_177+issuer"--MORGAN STANLEY
+0.070*"fi_177+depositor"--MORGAN STANLEY
+0.056*"fi_177+seller"--MORGAN STANLEY
+0.048*"fi_248+issuer"--SAXON MORTGAGE SERVICES
+0.046*"fi_248+servicer"--SAXON MORTGAGE SERVICES
+
+Topic: 14
+0.345*"fi_41+issuer"--BEAR STEARNS & CO. INC.
+0.062*"fi_87+servicer"--EMC MORTGAGE
+0.062*"fi_87+originator"--EMC MORTGAGE
+0.062*"fi_306+servicer"--WELLS FARGO
+0.056*"fi_41+depositor"--BEAR STEARNS & CO. INC.
+
+Topic: 15
+0.217*"fi_33+issuer"--BANC OF AMERICA SECURITIES LLC
+0.071*"fi_33+depositor"--BANC OF AMERICA SECURITIES LLC
+0.070*"fi_210+originator"--OPTION ONE
+0.065*"fi_34+servicer"--BANK OF AMERICA
+0.049*"fi_34+seller"--BANK OF AMERICA
+
+Topic: 16
+0.210*"fi_8+issuer"--ACE SECURITIES
+0.080*"fi_306+servicer"--WELLS FARGO
+0.077*"fi_74+issuer"--CREDIT-BASED ASSET SERVICING AND SECURITIZATION
+0.057*"fi_311+originator"--WMC MORTGAGE CORP.
+0.044*"fi_80+sponsor"--DEUTSCHE BANK
+
+Topic: 17
+0.333*"fi_72+issuer"--COUNTRYWIDE SECURITIES CORPORATION
+0.072*"fi_72+depositor"--COUNTRYWIDE SECURITIES CORPORATION
+0.060*"fi_115+originator"--FIRST NLC FINANCIAL SERVICES LLC
+0.051*"fi_39+issuer"--BARCLAYS BANK PLC
+0.048*"fi_188+originator"--NEW CENTURY
+
+Topic: 18
+0.387*"fi_308+issuer"--WILMINGTON TRUST
+0.098*"fi_71+servicer"--COUNTRYWIDE HOME LOANS
+0.089*"fi_110+issuer"--FIRST HORIZON HOME LOAN CORP.
+0.080*"fi_71+depositor"--COUNTRYWIDE HOME LOANS
+0.064*"fi_71+seller"--COUNTRYWIDE HOME LOANS
+
+Topic: 19
+0.115*"fi_125+issuer"--GMAC RFC
+0.078*"fi_179+originator"--MORTGAGEIT
+0.069*"fi_50+issuer"--CARRINGTON
+0.066*"fi_136+issuer"--HOMEBANC CORP.
+0.049*"fi_125+servicer"--GMAC RFC
+
+Topic: 20
+0.079*"fi_218+originator"--PEOPLES CHOICE HOME LOAN INC.
+0.077*"fi_234+issuer"--RENAISSANCE MORTGAGE ACCEPTANCE
+0.076*"fi_34+issuer"--BANK OF AMERICA
+0.073*"fi_203+servicer"--OCWEN
+0.066*"fi_306+servicer"--WELLS FARGO
+
+Topic: 21
+0.194*"fi_226+issuer"--PRINCIPAL RESIDENTIAL MORTGAGE, INC.
+0.143*"fi_138+issuer"--HOMEEQ SERVICING
+0.076*"fi_150+issuer"--IRWIN HOME EQUITY CORP.
+0.054*"fi_79+servicer"--DELTA FUNDING CORPORATION
+0.048*"fi_151+originator"--IRWIN UNION BANK & TRUST CO.
+
+Topic: 22
+0.134*"fi_128+originator"--GREENPOINT
+0.083*"fi_80+issuer"--DEUTSCHE BANK
+0.053*"fi_306+servicer"--WELLS FARGO
+0.044*"fi_113+originator"--FIRST NATIONAL BANK OF KEYSTONE
+0.043*"fi_242+issuer"--SACO I, INC.
+
+Topic: 23
+0.278*"fi_306+issuer"--WELLS FARGO
+0.087*"fi_306+servicer"--WELLS FARGO
+0.060*"fi_306+seller"--WELLS FARGO
+0.035*"fi_306+custodian"--WELLS FARGO
+0.031*"fi_33+issuer"--BANC OF AMERICA SECURITIES LLC
+
+Topic: 24
+0.537*"fi_306+issuer"--WELLS FARGO
+0.133*"fi_306+servicer"--WELLS FARGO
+0.093*"fi_306+custodian"--WELLS FARGO
+0.069*"fi_306+seller"--WELLS FARGO
+0.044*"fi_306+sponsor"--WELLS FARGO
+
+Topic: 25
+0.164*"fi_109+originator"--FIRST FRANKLIN FINANCIAL CORP.
+0.126*"fi_109+issuer"--FIRST FRANKLIN FINANCIAL CORP.
+0.114*"fi_181+originator"--NATIONAL CITY
+0.067*"fi_62+issuer"--CITIGROUP
+0.050*"fi_6+issuer"--ACCREDITED HOME LENDERS
+
+Topic: 26
+0.087*"fi_300+issuer"--US TRUST
+0.066*"fi_146+issuer"--IMPAC
+0.056*"fi_28+issuer"--ASSET BACKED FUNDING
+0.051*"fi_146+servicer"--IMPAC
+0.050*"fi_71+originator"--COUNTRYWIDE HOME LOANS
+
+Topic: 27
+0.351*"fi_74+issuer"--CREDIT-BASED ASSET SERVICING AND SECURITIZATION
+0.059*"fi_207+originator"--OLYMPUS SERVICING, L.P.
+0.047*"fi_306+servicer"--WELLS FARGO
+0.045*"fi_306+trustee"--WELLS FARGO
+0.040*"fi_27+originator"--ARGENT
+
+Topic: 28
+0.345*"fi_230+issuer"--QUICKEN LOANS
+0.152*"fi_137+originator"--HOMECOMINGS FINANCIAL, LLC
+0.077*"fi_230+depositor"--QUICKEN LOANS
+0.076*"fi_300+issuer"--US TRUST
+0.070*"fi_270+servicer"--THE BOSTON COMPANY
+
+Topic: 29
+0.162*"fi_171+issuer"--MERRILL LYNCH
+0.097*"fi_71+originator"--COUNTRYWIDE HOME LOANS
+0.086*"fi_54+originator"--CENTEX
+0.068*"fi_101+issuer"--FEDERAL NATIONAL MORTGAGE ASSOCIATION
+0.040*"fi_171+depositor"--MERRILL LYNCH
+
+Topic: 30
+0.166*"fi_127+issuer"--GOLDMAN SACHS & CO.
+0.072*"fi_18+issuer"--AMERICAN HOME MORTGAGE
+0.061*"fi_71+originator"--COUNTRYWIDE HOME LOANS
+0.059*"fi_18+originator"--AMERICAN HOME MORTGAGE
+0.052*"fi_306+servicer"--WELLS FARGO
+

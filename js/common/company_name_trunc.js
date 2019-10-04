@@ -1,5 +1,5 @@
 function company_name_trunctated (word_length,company_name){
-    console.log("in " +company_name)
+    //console.log("in " +company_name)
     var role_get = company_name.split("+");
     company_name = role_get[0]
     var role
@@ -38,7 +38,7 @@ function company_name_trunctated (word_length,company_name){
     }else{
         final_word = company_name
     }
-    console.log("out "+final_word+role)
+   // console.log("out "+final_word+role)
     return final_word+role
 }
 

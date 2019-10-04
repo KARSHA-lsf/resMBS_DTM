@@ -136,7 +136,7 @@
           <div class="row">
             <h1 class="ui huge dividing header">Baseline Round 1</h1>
             <div class="ui form">
-              Under construction
+              
               <!-- <div class="inline fields">
                 <label>Show information of </label>
                 <div class="field">
@@ -162,7 +162,7 @@
           </div>
           
           <div class="ui hidden section divider"></div>
-          <!-- <div class="row">
+          <div class="row">
                 <div id="chart1" class="five wide column"></div>
                 <div id="chart2" class="five wide column"></div>
                 <div id="chart3" class="five wide column"></div>
@@ -207,7 +207,7 @@
                 <div class="five wide column"></div>
                 <div class="five wide column"></div>
             </div>
-           -->
+          
 
           
         </div>
@@ -215,7 +215,10 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-   
+    
+    <script src="js/common/company_name_trunc.js"></script>
+    <script src="js/common/txt_to_array.js"></script>
+    <script src="js/common/sankey.js"></script>
     <script>
       $(document).ready(function() {
        
@@ -225,6 +228,8 @@
 
         
         $('.ui.accordion').accordion({ exclusive: false });
+
+        txt_to_array("data/baseline/round1.txt")
       });
     </script>
   </body>

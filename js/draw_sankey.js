@@ -33,6 +33,7 @@ function data_for_sankey(data,topic){
 }
 
 function draw_sankey(div_id,topic_id,graph){
+console.log(graph)
     d3.selectAll('#'+div_id+' svg').remove();
     var units = "Widgets";
 
